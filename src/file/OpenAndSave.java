@@ -1,0 +1,47 @@
+package file;
+
+import store.ProductStore;
+import store.WoodDirectory;
+
+import javax.swing.*;
+import java.io.*;
+
+public class OpenAndSave {
+    public static void save(WoodDirectory wd, ProductStore ps) throws Exception{
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        JFileChooser dialog = new JFileChooser();
+        dialog.setDialogTitle("Виберіть файл для збереження");
+        dialog.setApproveButtonText("Збетегти");
+        dialog.showOpenDialog(null);
+        File f = dialog.getSelectedFile();
+        if(f != null){
+            try {
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(wd);
+                oos.writeObject(ps);
+                oos.close();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static Object[] open() throws Exception{
+        JFileChooser dialog = new JFileChooser();
+        dialog.setDialogTitle("Виберіть файл для відкриття");
+        dialog.setApproveButtonText("Відкрити");
+        dialog.showOpenDialog(null);
+        File f = dialog.getSelectedFile();
+        if(f != null){
+            Object[] obj = new Object[2];
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            obj[0] = ois.readObject();
+            obj[1] = ois.readObject();
+            ois.close();
+            return obj;
+        }else return null;
+
+    }
+}
