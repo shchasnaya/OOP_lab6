@@ -62,13 +62,17 @@ public class DlgCilinder extends JDialog implements IWoodDialog {
         float length = Float.parseFloat(textFieldLenth.getText());
         float diameter = Float.parseFloat(textFieldDiameter.getText());
         Wood wood = (Wood) comboBox1.getSelectedItem();
+        boolean flag = true;
         try {
             cilinder = new Cilinder(wood, length, diameter);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Waste Dialog Error", JOptionPane.ERROR_MESSAGE);
+            flag = false;
         }
-        DlgCilinder.this.setVisible(false);
-        dispose();
+        if(flag) {
+            DlgCilinder.this.setVisible(false);
+            dispose();
+        }
     }
 
     private void onCancel() {

@@ -58,7 +58,6 @@ public class DlgWaste extends JDialog implements IWoodDialog {
     }
 
     private void onOK() {
-
         float weight = Float.parseFloat(textFieldWeight.getText());
         try {
             waste = new Waste(weight);

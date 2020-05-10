@@ -65,13 +65,17 @@ public class DlgTimber extends JDialog implements IWoodDialog {
         float height = Float.parseFloat(textFieldHeight.getText());
         float width = Float.parseFloat(textFieldWidth.getText());
         Wood wood = (Wood) comboBox1.getSelectedItem();
+        boolean flag = true;
         try {
             timber = new Timber(wood, length, height, width);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Waste Dialog Error", JOptionPane.ERROR_MESSAGE);
+            flag = false;
         }
-        DlgTimber.this.setVisible(false);
-        dispose();
+        if(flag) {
+            DlgTimber.this.setVisible(false);
+            dispose();
+        }
     }
 
     private void onCancel() {
