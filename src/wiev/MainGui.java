@@ -6,6 +6,7 @@ import store.ProductStore;
 import store.WoodDirectory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,10 +47,9 @@ public class MainGui {
         frame = new JFrame();
         frame.setBounds(200, 200, 600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Lab4 OOP");
+        frame.setTitle("Lab6 OOP");
         frame.setContentPane(MainPanel);
-        //frame.setLocationRelativeTo(textArea1);
-        //frame.setSize(600,300);
+        frame.setMinimumSize(new Dimension(600,400));
         menuBar.add(menu);
         menu.add(menuItem_open);
         menu.add(menuItem_save);
